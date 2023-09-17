@@ -43,6 +43,7 @@ export default {
       },
       screens: {
         'xs': '576px',
+        '3xl': '1720px',
       },
       gradientColorStopPositions: {
         "33%": '33.3%',

@@ -28,8 +28,28 @@
 </script>
 
 <section class="container mx-auto px-4 relative flex flex-col lg:grid lg:space-y-0 w-full lg:grid-cols-10 md:flex-1 md:grid-rows-full bg-split first-split-red-400">
-    <section class="pt-8 border-gray-200 bg-gray-75 dark:bg-gray-775 dark:border-gray-700 lg:static lg:px-0 lg:col-span-4 xl:col-span-3 lg:border-r hidden lg:block">
-
+    <section class="pt-8 pr-6 pl-0 overflow-y-auto max-h-screen border-gray-200 bg-gray-75 dark:bg-gray-775 dark:border-gray-700 lg:static lg:col-span-4 xl:col-span-3 lg:border-r hidden lg:block">
+        <div class="mb-3">
+            <div class="mb-3 text-sm font-medium text-gray-500">Multimodal</div>
+            <div class="flex flex-wrap">
+               <a class="items-center rounded-md border inline-flex text-sm max-w-full overflow-hidden text-ellipsis whitespace-nowrap md:mb-1.5 md:mr-1.5" href="#">
+                  <div class="items-center flex h-7 w-8 pl-2">
+                     <svg class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" fill="currentColor" focusable="false" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+                        <path d="M27 3H5a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 2v4H5V5zm-10 6h10v7H17zm-2 7H5v-7h10zM5 20h10v7H5zm12 7v-7h10v7z"></path>
+                     </svg>
+                  </div>
+                  <span class="px-2">Feature Extraction</span> 
+               </a>
+               <a class="items-center rounded-md border inline-flex text-sm max-w-full overflow-hidden text-ellipsis whitespace-nowrap md:mb-1.5 md:mr-1.5" href="#">
+                <div class="items-center flex h-7 w-8 pl-2">
+                   <svg class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" fill="currentColor" focusable="false" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
+                      <path d="M27 3H5a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 2v4H5V5zm-10 6h10v7H17zm-2 7H5v-7h10zM5 20h10v7H5zm12 7v-7h10v7z"></path>
+                   </svg>
+                </div>
+                <span class="px-2">Feature Extractiodwdwdwdn dwdwd</span> 
+             </a>
+            </div>
+         </div>
     </section>
     <section class="pt-8 lg:pl-6 col-span-full lg:col-span-6 xl:col-span-7 pb-12 bg-gray-50 dark:bg-gray-800">
         <div class="mb-8 items-center md:flex">
