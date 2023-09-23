@@ -3,7 +3,7 @@
     /**
 	 * @type {number}
 	 */
-     export let step;
+    export let step;
 </script>
 <div class="container mx-auto px-12 max-xs:hidden pt-10">
     <ol class="flex justify-center items-center font-medium text-center text-gray-500 dark:text-gray-400 text-base">

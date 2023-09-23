@@ -1,7 +1,10 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
+/** @type { string } */
 const RECENT_SEARCHES_KEY = 'RECENT_SEARCHES';
+
+/** @type { number | undefined } */
 const RECENT_SEARCHES_LIMIT = 7;
 
 /** @type {{items: Array<{ id: string; title: string; icon?: string | undefined; url: string; }>, total: number}} */
@@ -26,7 +29,8 @@ function createRecentSearches() {
         const index = state.items.findIndex((item) => item.id === newItem.id);
 
         if (index === -1) {
-          if (state.items.length >= RECENT_SEARCHES_LIMIT) {
+          /* remove this branch for no limit */
+          if (RECENT_SEARCHES_LIMIT != undefined && state.items.length >= RECENT_SEARCHES_LIMIT) {
             state.items.pop();
             state.total -= 1;
           }

@@ -3,6 +3,7 @@
 	import ModelCard from "../../../components/+ModelCard.svelte";
 	import ModelCardSkeleton from "../../../components/+ModelCardSkeleton.svelte";
 	import FilterDropdown from "../../../components/+FilterDropdown.svelte";
+	import FilterBox from "../../../components/+FilterBox.svelte";
 
     let bodyClasses = ["lg:bg-gradient-to-r", "lg:from-gray-75", "lg:to-gray-50", "dark:lg:from-gray-775", "dark:lg:to-gray-800", "lg:from-50%", "lg:to-50%"]
 
@@ -24,32 +25,19 @@
         {
             name: 'Recently Updated'
         }
-    ]
+    ];
+
+    let selected = options[0];
+
+    $: {
+        console.log("Sort changed to " + selected.name)
+    }
+
 </script>
 
 <section class="container mx-auto px-4 relative flex flex-col lg:grid lg:space-y-0 w-full lg:grid-cols-10 md:flex-1 md:grid-rows-full bg-split first-split-red-400">
     <section class="pt-8 pr-6 pl-0 overflow-y-auto max-h-screen border-gray-200 bg-gray-75 dark:bg-gray-775 dark:border-gray-700 lg:static lg:col-span-4 xl:col-span-3 lg:border-r hidden lg:block">
-        <div class="mb-3">
-            <div class="mb-3 text-sm font-medium text-gray-500">Multimodal</div>
-            <div class="flex flex-wrap">
-               <a class="items-center rounded-md border inline-flex text-sm max-w-full overflow-hidden text-ellipsis whitespace-nowrap md:mb-1.5 md:mr-1.5" href="#">
-                  <div class="items-center flex h-7 w-8 pl-2">
-                     <svg class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" fill="currentColor" focusable="false" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
-                        <path d="M27 3H5a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 2v4H5V5zm-10 6h10v7H17zm-2 7H5v-7h10zM5 20h10v7H5zm12 7v-7h10v7z"></path>
-                     </svg>
-                  </div>
-                  <span class="px-2">Feature Extraction</span> 
-               </a>
-               <a class="items-center rounded-md border inline-flex text-sm max-w-full overflow-hidden text-ellipsis whitespace-nowrap md:mb-1.5 md:mr-1.5" href="#">
-                <div class="items-center flex h-7 w-8 pl-2">
-                   <svg class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" fill="currentColor" focusable="false" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32">
-                      <path d="M27 3H5a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 2v4H5V5zm-10 6h10v7H17zm-2 7H5v-7h10zM5 20h10v7H5zm12 7v-7h10v7z"></path>
-                   </svg>
-                </div>
-                <span class="px-2">Feature Extractiodwdwdwdn dwdwd</span> 
-             </a>
-            </div>
-         </div>
+        <FilterBox />
     </section>
     <section class="pt-8 lg:pl-6 col-span-full lg:col-span-6 xl:col-span-7 pb-12 bg-gray-50 dark:bg-gray-800">
         <div class="mb-8 items-center md:flex">
@@ -60,7 +48,7 @@
                     <input placeholder="Filter by keyword" type="text" name="model-keywords" id="model-keywords" class="pl-8 focus:ring-4 focus:outline-none text-sm hover:text-gray-900 border-gray-200 dark:border-gray-600 dark:hover:text-white dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-gray-200 dark:focus:ring-gray-700 bg-white text-gray-700 shadow-sm align-middle border rounded-lg focus:border-gray-200 block px-3 py-1.5 w-full placeholder:text-gray-300 dark:placeholder:text-gray-500">
                 </form>  
             </div>
-            <FilterDropdown {options}/>
+            <FilterDropdown {options} bind:selected/>
         </div>
         <div class="relative">
             <div class="grid grid-cols-1 gap-5 2xl:grid-cols-2">

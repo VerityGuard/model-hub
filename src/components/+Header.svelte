@@ -129,7 +129,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 pb-0.5 pr-0.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
             </IconButton>
 
-            <hr class="divider mx-2.5 hidden max-xl:block w-px h-4 bg-gray-300" />
+            <div class="mx-2.5 hidden max-xl:block w-px h-4 bg-gray-300 dark:bg-gray-700" ></div>
 
             <IconButton toggleMessage="View on Github" btnClass="mr-1.5" wrapperClass="hidden xl:block">
                 <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false" data-icon="github" role="img" class="w-5 h-5">

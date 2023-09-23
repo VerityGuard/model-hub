@@ -1,7 +1,11 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
+/** @type { string } */
 const FAVORITE_SEARCHES_KEY = 'FAVORITE_SEARCHES';
+
+/** @type { number | undefined } */
+const FAVORITE_SEARCHES_LIMIT = undefined;
 
 /** @type {{items: Array<{ id: string; title: string; icon?: string | undefined; url: string; }>, total: number}} */
 const initialState = browser && localStorage.getItem(FAVORITE_SEARCHES_KEY)
@@ -25,6 +29,12 @@ function createFavoriteSearches() {
         const index = state.items.findIndex((item) => item.id === newItem.id);
 
         if (index === -1) {
+          /* remove this branch for no limit */
+          if (FAVORITE_SEARCHES_LIMIT != undefined && state.items.length >= FAVORITE_SEARCHES_LIMIT) {
+            state.items.shift();
+            state.total -= 1;
+          }
+
           state.items.push(newItem);
           state.total += 1;
           updateLocalStorage(state);
