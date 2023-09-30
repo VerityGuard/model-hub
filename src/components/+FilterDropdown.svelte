@@ -31,7 +31,7 @@
 </script>
 
 <div class="flex relative" use:clickOutside on:outsideclick={handleOutsideClick}>
-    <button on:click={toggleOptionList} class="w-44 focus:ring-4 focus:outline-none text-sm hover:text-gray-900 border-gray-200 dark:border-gray-600 dark:hover:text-white dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-gray-200 dark:focus:ring-gray-700 bg-white text-gray-700 shadow-sm align-middle flex-shrink-0 z-10 inline-flex justify-between items-center focus:border-gray-200 py-1.5 px-3 text-center border rounded-lg" type="button">
+    <button on:click={toggleOptionList} class="min-w-[11rem] focus:ring-4 focus:outline-none text-sm hover:text-gray-900 border-gray-200 dark:border-gray-600 dark:hover:text-white dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-gray-200 dark:focus:ring-gray-700 bg-white text-gray-700 shadow-sm align-middle flex-shrink-0 z-10 inline-flex justify-between items-center focus:border-gray-200 py-1.5 px-3 text-center border rounded-lg" type="button">
         <span class="overflow-hidden text-ellipsis flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="h-4 w-4 mr-2">
                 <path fill="currentColor" d="M6 36h12v-4H6v4zm0-24v4h36v-4H6zm0 14h24v-4H6v4z"></path>
@@ -44,7 +44,7 @@
         </svg>
     </button>
     {#if optionListVisible}
-        <div transition:fly={{ duration: 100, y: -10 }} class="z-10 absolute top-12 bg-white divide-y divide-gray-100 rounded-lg md:shadow-sm shadow-md w-44 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
+        <div transition:fly={{ duration: 100, y: -10 }} class="z-10 absolute top-12 bg-white divide-y divide-gray-100 rounded-lg md:shadow-sm shadow-md w-full dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
             {#each options as option}
                 <li>
