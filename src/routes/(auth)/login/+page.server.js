@@ -1,55 +1,53 @@
-import { fail, redirect } from '@sveltejs/kit';
+import { redirect } from "@sveltejs/kit";
 
-import * as fs from 'fs';
-
-/**
- * @param {string} logMessage
- */
-function appendToLogFile(logMessage) {
-    const logEntry = `${new Date().toISOString()}: ${logMessage}\n`;
-
-    fs.appendFile(logFilePath, logEntry, (/** @type {any} */ err) => {
-        if (err) {
-            console.error('Error appending to log file:', err);
-        }
-    });
-}
-
-const logFilePath = 'logs.txt';
-
-/** @type {import('./$types').Actions} */
+export const load = async ({ cookies }) => {
+    const sessionId = cookies.get("sessionId");
+  
+    if (sessionId) {
+      throw redirect(301, "/");
+    }
+};
+  
 export const actions = {
     login: async ({ cookies, request, url }) => {
         const data = await request.formData();
-        const email = data.get('username');
+        const username = data.get('username');
         const password = data.get('password');
 
-        appendToLogFile('Login form submitted');
-        appendToLogFile(`Email: ${email}`);
-        appendToLogFile(`Password: ${password}`);
-
-		if (!email) {
-			return fail(400, { email, missing: true });
-		}
+        const body = await JSON.stringify({username, password})
 
         if (url.searchParams.has('redirectTo')) {
-			throw redirect(303, url.searchParams.get('redirectTo'));
-		}
+            throw redirect(301, url.searchParams.get('redirectTo'));
+        }
 
         /*
-        const user = await db.getUser(email);
+        const res = await fetch('', {
+            body,
+            method: "POST",
+            headers: { "content-type": "application/json" },
+        });
 
-		if (!user || user.password !== hash(password)) {
-			return fail(400, { email, incorrect: true });
-		}
+        if (res.ok) {
 
-        cookies.set('sessionid', await db.createSession(user));
+            const sessionId = res.headers.get("Authorization");
 
-        if (url.searchParams.has('redirectTo')) {
-			throw redirect(303, url.searchParams.get('redirectTo'));
-		}
+            cookies.set("sessionId", sessionId?.split("Bearer ")[1] ?? "", {
+                path: "/",
+            });
+      
+            if (url.searchParams.has('redirectTo')) {
+                throw redirect(301, url.searchParams.get('redirectTo'));
+            }
 
-        return { success: true };
+            return {
+                status: 200,
+                body: { message: "Login was completed successfully." },
+            }
+        }
+        
+        return {
+            error: await res.text(),
+        };
         */
     }
 };

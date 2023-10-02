@@ -2,20 +2,32 @@
 	import { Button } from "flowbite-svelte";
 	import Logo from "./+Logo.svelte";
 
-    /**
-	 * @type {any}
-	 */
-    export let file = null;
     export let next = "";
-
+    export let step = 1;
+    
     /**
 	 * @type {boolean}
 	 */
     let hasFileSelected;
 
-    $: {
-        hasFileSelected = file?.length > 0
-    }
+    /**
+	 * @param {{ currentTarget: { files: any; }; }} event
+	 */
+    function handleFileChange(event) {
+        const selectedFiles = event.currentTarget.files;
+
+        if (selectedFiles.length > 0) {
+            hasFileSelected = true;
+            const selectedFile = selectedFiles[0];
+            console.log('Selected File:', selectedFile);
+            console.log('File Name:', selectedFile.name);
+            console.log('File Size:', selectedFile.size);
+            console.log('File Type:', selectedFile.type);
+        } else {
+            hasFileSelected = false;
+            console.log('No file selected.');
+        }
+  }
 </script>
 
 <div class="w-full rounded-xl shadow dark:border md:mt-0 md:max-w-xl xl:p-0 bg-white dark:bg-gray-900 dark:border-gray-700">
@@ -27,7 +39,7 @@
         <p class="font-light text-gray-500 dark:text-gray-400 mb-8 text-center">
             One last step to join the community
         </p>
-        <form on:submit>
+        <form on:submit action="?/join{!next && "&redirectTo=/"}" method="post" enctype="multipart/form-data">
             <div class="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="order-first">
                     <label for="username" class="block mb-2 dark:text-gray-400 font-medium">Username</label>
@@ -39,7 +51,7 @@
                 </div>
                 <div class="order-3">
                     <label for="avatar" class="block mb-2 dark:text-gray-400 font-medium">Avatar <span class="pl-1 text-gray-400 dark:text-gray-300 font-normal">(optional)</span></label>
-                    <input accept="image/png, image/jpeg" bind:value={file} class="{hasFileSelected ? 'text-gray-900 dark:text-gray-400' : 'text-gray-300 dark:text-gray-500'}  block text-base w-full border border-gray-200 rounded-lg cursor-pointer focus:outline-none dark:bg-gray-700 dark:border-gray-600" id="avatar" type="file">
+                    <input type="file" name="avatar" id="avatar" on:change={handleFileChange} accept="image/png, image/jpeg" class="{hasFileSelected ? 'text-gray-900 dark:text-gray-400' : 'text-gray-300 dark:text-gray-500'}  block text-base w-full border border-gray-200 rounded-lg cursor-pointer focus:outline-none dark:bg-gray-700 dark:border-gray-600">
                 </div>
                 <div class="order-5 md:order-4">
                     <label for="github" class="block mb-2 dark:text-gray-400 font-medium">
@@ -65,7 +77,7 @@
                 </div>
                 <div class="flex items-start md:col-span-2 mt-4 order-last">
                     <div class="flex items-center h-5">
-                        <input id="terms" type="checkbox" class="w-5 h-5 cursor-pointer bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600" value="on">                    
+                        <input id="terms" name="terms" type="checkbox" class="w-5 h-5 cursor-pointer bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600" required>                    
                     </div>
                     <div class="ml-3 leading-none">
                         <label for="terms" class="text-gray-500 dark:text-gray-400">I have read and agree with the
@@ -76,9 +88,14 @@
                     </div>
                 </div>
             </div>
+            <input name="step" id="step" type="hidden" value={step}>
             <div>
-                <Button type="submit" on:submit outline color="light" class="w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
-                    Next Step{#if next}: {next}{/if}
+                <Button type="submit" outline color="light" class="w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+                    {#if next}
+                        Next Step: {next}
+                    {:else}
+                        Register
+                    {/if}
                 </Button>
             </div>
         </form>
