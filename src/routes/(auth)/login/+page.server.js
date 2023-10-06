@@ -1,5 +1,9 @@
 import { redirect } from "@sveltejs/kit";
 
+import { env } from '../../../lib/env';
+
+const LOGIN_URL = `${env.BASE_API_URL}/${env.LOGIN_PATH}`
+
 export const load = async ({ cookies }) => {
     const sessionId = cookies.get("sessionId");
   
@@ -15,13 +19,8 @@ export const actions = {
         const password = data.get('password');
 
         const body = await JSON.stringify({username, password})
-
-        if (url.searchParams.has('redirectTo')) {
-            throw redirect(301, url.searchParams.get('redirectTo'));
-        }
-
-        /*
-        const res = await fetch('', {
+        
+        const res = await fetch(LOGIN_URL, {
             body,
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -29,11 +28,7 @@ export const actions = {
 
         if (res.ok) {
 
-            const sessionId = res.headers.get("Authorization");
-
-            cookies.set("sessionId", sessionId?.split("Bearer ")[1] ?? "", {
-                path: "/",
-            });
+            // store token
       
             if (url.searchParams.has('redirectTo')) {
                 throw redirect(301, url.searchParams.get('redirectTo'));
@@ -48,6 +43,5 @@ export const actions = {
         return {
             error: await res.text(),
         };
-        */
     }
 };

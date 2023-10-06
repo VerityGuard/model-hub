@@ -1,5 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 
+import { env } from '../../../lib/env';
+
+const REGISTER_URL = `${env.BASE_API_URL}/${env.REGISTER_PATH}`
+
 export const actions = {
     join: async ({ cookies, request, url }) => {
         const data = await request.formData();
@@ -34,12 +38,7 @@ export const actions = {
 
             const body = JSON.stringify(formData)
 
-            if (url.searchParams.has('redirectTo')) {
-                throw redirect(301, url.searchParams.get('redirectTo'));
-            }
-
-            /*
-            const res = await fetch('', {
+            const res = await fetch(REGISTER_URL, {
                 body,
                 method: "POST",
                 headers: { "content-type": "application/json" },
@@ -47,11 +46,7 @@ export const actions = {
 
             if (res.ok) {
 
-                const sessionId = res.headers.get("Authorization");
-    
-                cookies.set("sessionId", sessionId?.split("Bearer ")[1] ?? "", {
-                    path: "/",
-                });
+                // store token
           
                 if (url.searchParams.has('redirectTo')) {
                     throw redirect(301, url.searchParams.get('redirectTo'));
@@ -67,7 +62,6 @@ export const actions = {
                 status: res.status,
                 error: await res.text(),
             };
-            */
         } else {
 
             return {
