@@ -1,73 +1,68 @@
 import { redirect } from '@sveltejs/kit';
-
 import { env } from '../../../lib/env';
+import camelize from "../../../utils/camalize";
 
 const REGISTER_URL = `${env.BASE_API_URL}/${env.REGISTER_PATH}`
 
+export const load = async ({ cookies }) => {
+    const loggedIn = cookies.get("logged_in")
+
+    if (loggedIn) {
+        throw redirect(301, '/')
+    }
+};
+
 export const actions = {
-    join: async ({ cookies, request, url }) => {
-        const data = await request.formData();
-        const step = parseInt(data.get('step'), 10);
-  
-        let formData = {}
+    default: async ({ cookies, request, url }) => {
+        const formData = await request.formData();
 
-        if (step === 1) {
-            const email = data.get('email');
-            const password = data.get('password');
+        console.log(formData.get('avatar'))
+        console.log(formData.get('avatar').filename)
+        console.log(formData)
 
-            formData = {
-                email,
-                password
-            };
+        const res = await fetch(REGISTER_URL, {
+            body: formData,
+            credentials: 'include',
+            method: "POST",
+        });
+
+        if (res.ok) {                
+            const cookieResponse= res.headers.get("set-cookie");
+            if (cookieResponse) {
+                const cookiesString = cookieResponse.replace("Response Cookies: ", "");
+                const cookiesArray = cookiesString.split(', ');
+            
+                cookiesArray.forEach(cookie => {
+                    const cookieParts = cookie.split('; ');
+                
+                    const [name, value] = cookieParts[0].split('=');
+                
+                    const options = {};
+                
+                    for (let i = 1; i < cookieParts.length; i++) {
+                      const [attrName, attrValue] = cookieParts[i].split('=');
+                      options[camelize(attrName)] = attrValue || true;
+                    }
+                
+                    console.log(options)
+                
+                    cookies.set(name, value, options);
+                  });
+              
+            }
+
+            if (url.searchParams.has('redirectTo')) {
+                throw redirect(301, url.searchParams.get('redirectTo') || '/');
+            }
         
             return {
                 status: 200,
-                body: { message: "Step 1 data received and processed successfully." },
-            };
-        } else if (step === 2) {
-            const username = data.get('username');
-            const name = data.get('name');
-            const avatar = data.get('avatar');
-            const github = data.get('github');
-            const twitter = data.get('twitter');
-            const homepage = data.get('homepage');
-        
-            formData = {
-                ...formData, username, name, avatar, github, twitter, homepage
-            };
-
-            const body = JSON.stringify(formData)
-
-            const res = await fetch(REGISTER_URL, {
-                body,
-                method: "POST",
-                headers: { "content-type": "application/json" },
-            });
-
-            if (res.ok) {
-
-                // store token
-          
-                if (url.searchParams.has('redirectTo')) {
-                    throw redirect(301, url.searchParams.get('redirectTo'));
-                }
-    
-                return {
-                    status: 200,
-                    body: { message: "Step 2 data received and processed successfully." },
-                };
-            }
-            
-            return {
-                status: res.status,
-                error: await res.text(),
-            };
-        } else {
-
-            return {
-                status: 400,
-                body: { error: "Invalid step value." },
+                body: { message: "Registering process was completed successfully." },
             };
         }
+        return {
+            status: res.status,
+            error: await res.text(),
+        }; 
     },
 };
