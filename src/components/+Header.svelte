@@ -6,6 +6,7 @@
     import Logo from "./+Logo.svelte";
     import Hamburger from './+Hamburger.svelte';
 	import { afterUpdate, onMount } from 'svelte';
+	import { page } from '$app/stores';
 
     let searching = false;
     let btnClass = 'text-gray-500 inline-flex items-center justify-center dark:text-gray-400 hover:bg-gray-100 w-10 h-10 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5';
@@ -152,13 +153,16 @@
             <DarkMode {btnClass}/>
             <Tooltip placement="bottom" target="_top">Toggle dark mode</Tooltip>
 
-            <Button href="/login" outline color="light" class="h-pixel-36 hidden ml-10 md:inline-flex bg-white text-gray-700 gap-2 justify-center items-center py-1.5 px-3 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
-                Log In
-                <svg class="w-2.5 h-auto" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 7C0.447715 7 -3.73832e-07 7.44771 -3.49691e-07 8C-3.2555e-07 8.55228 0.447715 9 1 9L13.0858 9L7.79289 14.2929C7.40237 14.6834 7.40237 15.3166 7.79289 15.7071C8.18342 16.0976 8.81658 16.0976 9.20711 15.7071L16.0303 8.88388C16.5185 8.39573 16.5185 7.60427 16.0303 7.11612L9.20711 0.292893C8.81658 -0.0976318 8.18342 -0.0976318 7.79289 0.292893C7.40237 0.683417 7.40237 1.31658 7.79289 1.70711L13.0858 7L1 7Z" fill="currentColor"/>
-                </svg>
-            </Button>
-
+            {#if !$page.data.loggedIn}
+                <Button href="/login" outline color="light" class="h-pixel-36 hidden ml-10 md:inline-flex bg-white text-gray-700 gap-2 justify-center items-center py-1.5 px-3 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+                    Log In
+                    <svg class="w-2.5 h-auto" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1 7C0.447715 7 -3.73832e-07 7.44771 -3.49691e-07 8C-3.2555e-07 8.55228 0.447715 9 1 9L13.0858 9L7.79289 14.2929C7.40237 14.6834 7.40237 15.3166 7.79289 15.7071C8.18342 16.0976 8.81658 16.0976 9.20711 15.7071L16.0303 8.88388C16.5185 8.39573 16.5185 7.60427 16.0303 7.11612L9.20711 0.292893C8.81658 -0.0976318 8.18342 -0.0976318 7.79289 0.292893C7.40237 0.683417 7.40237 1.31658 7.79289 1.70711L13.0858 7L1 7Z" fill="currentColor"/>
+                    </svg>
+                </Button>
+            {:else}
+                <span>{$page.data.loggedIn}</span>
+            {/if}
         </section>
     </Navbar>
 </header>

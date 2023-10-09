@@ -7,7 +7,7 @@ const REGISTER_URL = `${env.BASE_API_URL}/${env.REGISTER_PATH}`
 export const load = async ({ cookies }) => {
     const loggedIn = cookies.get("logged_in")
 
-    if (loggedIn) {
+    if (loggedIn === "true") {
         throw redirect(301, '/')
     }
 };

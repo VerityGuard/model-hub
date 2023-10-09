@@ -7,7 +7,7 @@ const LOGIN_URL = `${env.BASE_API_URL}/${env.LOGIN_PATH}`
 export const load = async ({ cookies }) => {
     const loggedIn = cookies.get("logged_in")
 
-    if (loggedIn) {
+    if (loggedIn === "true") {
         throw redirect(301, '/me')
     }
 };
