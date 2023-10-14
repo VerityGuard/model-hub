@@ -1,24 +1,20 @@
 import { redirect } from '@sveltejs/kit';
-import { env } from '../../../lib/env';
+import { env } from '$lib/env';
 import camelize from "../../../utils/camalize";
 
-const REGISTER_URL = `${env.BASE_API_URL}/${env.REGISTER_PATH}`
+const REGISTER_URL = `${env.BASE_API_URL}/${env.REGISTER_PATH}`;
 
 export const load = async ({ cookies }) => {
-    const loggedIn = cookies.get("logged_in")
+    const loggedIn = cookies.get("logged_in") === "true";
 
-    if (loggedIn === "true") {
-        throw redirect(301, '/')
+    if (loggedIn) {
+        throw redirect(301, '/');
     }
 };
 
 export const actions = {
     default: async ({ cookies, request, url }) => {
         const formData = await request.formData();
-
-        console.log(formData.get('avatar'))
-        console.log(formData.get('avatar').filename)
-        console.log(formData)
 
         const res = await fetch(REGISTER_URL, {
             body: formData,
@@ -44,10 +40,8 @@ export const actions = {
                       options[camelize(attrName)] = attrValue || true;
                     }
                 
-                    console.log(options)
-                
                     cookies.set(name, value, options);
-                  });
+                  })
               
             }
 
@@ -58,11 +52,11 @@ export const actions = {
             return {
                 status: 200,
                 body: { message: "Registering process was completed successfully." },
-            };
+            }
         }
         return {
             status: res.status,
             error: await res.text(),
-        }; 
+        } 
     },
 };

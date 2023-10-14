@@ -1,14 +1,14 @@
 import { redirect } from "@sveltejs/kit";
-import { env } from '../../../lib/env';
+import { env } from '$lib/env';
 import camelize from "../../../utils/camalize";
 
-const LOGIN_URL = `${env.BASE_API_URL}/${env.LOGIN_PATH}`
+const LOGIN_URL = `${env.BASE_API_URL}/${env.LOGIN_PATH}`;
 
 export const load = async ({ cookies }) => {
-    const loggedIn = cookies.get("logged_in")
+    const loggedIn = cookies.get("logged_in") === "true";
 
-    if (loggedIn === "true") {
-        throw redirect(301, '/me')
+    if (loggedIn) {
+        throw redirect(301, '/me');
     }
 };
   
@@ -39,8 +39,6 @@ export const actions = {
                       const [attrName, attrValue] = cookieParts[i].split('=');
                       options[camelize(attrName)] = attrValue || true;
                     }
-
-                    console.log(options)
                   
                     cookies.set(name, value, options);
                   });
