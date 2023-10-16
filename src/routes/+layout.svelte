@@ -6,9 +6,7 @@
 
 <Header />
 
-<main>
-  <slot />
-</main>
+<slot />
 
 <style>
 </style>

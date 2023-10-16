@@ -1,4 +1,5 @@
 <script>
+	import { applyAction, enhance } from "$app/forms";
 	import FormAccount from "../../../components/+FormAccount.svelte";
 	import FormProfile from "../../../components/+FormProfile.svelte";
     
@@ -19,13 +20,20 @@
 
 <section>
     <!--<JoinStepper {step} />-->
-    <div>
-        <form method="POST" class="flex flex-col items-center px-6 mx-auto py-20" enctype="multipart/form-data" bind:this={formReference}>
+    <form 
+        method="POST" 
+        class="flex flex-col items-center px-6 mx-auto py-20" 
+        enctype="multipart/form-data" bind:this={formReference}             
+        use:enhance={async () => {
+            return async ({ result }) => {
+            await applyAction(result);
+            };
+        }}
+        >
             <FormAccount on:click={goToNextStep} next="Profile" active={step === 1}/>
             <FormProfile on:click={handleFormProfileClick} active={step === 2} /> 
             <!--
                 <span>CONFIRM</span>
             -->
-        </form>
-    </div>
+    </form>
 </section>

@@ -36,7 +36,7 @@
 </script>
 
 <section class="container mx-auto px-4 relative flex flex-col lg:grid lg:space-y-0 w-full lg:grid-cols-10 md:flex-1 md:grid-rows-full bg-split first-split-red-400">
-    <section class="pt-8 pr-6 pl-0 overflow-y-auto max-h-screen border-gray-200 bg-gray-75 dark:bg-gray-775 dark:border-gray-700 lg:static lg:col-span-4 xl:col-span-3 lg:border-r hidden lg:block">
+    <section class="pt-8 pr-6 pl-0 overflow-y-auto border-gray-200 bg-gray-75 dark:bg-gray-775 dark:border-gray-700 lg:static lg:col-span-4 xl:col-span-3 lg:border-r hidden lg:block">
         <FilterBox />
     </section>
     <section class="pt-8 lg:pl-6 col-span-full lg:col-span-6 xl:col-span-7 pb-12 bg-gray-50 dark:bg-gray-800">

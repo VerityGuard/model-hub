@@ -42,15 +42,15 @@
             <div class="mb-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="order-first">
                     <label for="username" class="block mb-2 dark:text-gray-400 font-medium">Username</label>
-                    <input pattern="\b(?!\d+$)([a-zA-Z0-9]|-(?!-))+\b" minlength="3" maxlength="42" autocorrect="off" autocapitalize="none" autocomplete="username" type="text" name="username" id="username" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Username123" required>
+                    <input pattern="\b(?!\d+$)([a-zA-Z0-9]|-(?!-))+\b" minlength="3" maxlength="42" autocorrect="off" autocapitalize="none" autocomplete="username" type="text" name="username" id="username" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="Username123" required>
                 </div>
                 <div class="order-2">
                     <label for="name" class="block mb-2 dark:text-gray-400 font-medium">Full name</label>
-                    <input autocomplete="name" type="text" name="name" id="name" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
+                    <input autocomplete="name" type="text" name="name" id="name" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
                 </div>
                 <div class="order-3">
                     <label for="avatar" class="block mb-2 dark:text-gray-400 font-medium">Avatar <span class="pl-1 text-gray-400 dark:text-gray-300 font-normal">(optional)</span></label>
-                    <input type="file" name="avatar" id="avatar" on:change={handleFileChange} accept="image/png, image/jpeg, image/gif" class="{hasFileSelected ? 'text-gray-900 dark:text-gray-400' : 'text-gray-300 dark:text-gray-500'}  block text-base w-full border border-gray-200 rounded-lg cursor-pointer focus:outline-none dark:bg-gray-700 dark:border-gray-600">
+                    <input type="file" name="avatar" id="avatar" on:change={handleFileChange} accept="image/png, image/jpeg, image/gif" class="{hasFileSelected ? 'text-gray-900 dark:text-gray-250' : 'text-gray-300 dark:text-gray-500'}  block text-base w-full border border-gray-200 rounded-lg cursor-pointer focus:outline-none dark:bg-gray-700 dark:border-gray-600">
                 </div>
                 <div class="order-5 md:order-4">
                     <label for="github_username" class="block mb-2 dark:text-gray-400 font-medium">
@@ -59,11 +59,11 @@
                         </svg>
                         Github username <span class="pl-1 text-gray-400 dark:text-gray-300 font-normal">(optional)</span>
                     </label>
-                    <input pattern="[a-zA-Z\d-]+" type="text" name="github_username" id="github_username" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500">
+                    <input pattern="[a-zA-Z\d-]+" type="text" name="github_username" id="github_username" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500">
                 </div>
                 <div class="order-4 md:order-5">
                     <label for="homepage_url" class="block mb-2 dark:text-gray-400 font-medium">Homepage <span class="pl-1 text-gray-400 dark:text-gray-300 font-normal">(optional)</span></label>
-                    <input type="url" name="homepage_url" id="homepage_url" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500">
+                    <input type="url" name="homepage_url" id="homepage_url" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500">
                 </div>
                 <div class="order-6">
                     <label for="twitter_username" class="block mb-2 dark:text-gray-400 font-medium">
@@ -72,23 +72,24 @@
                         </svg>
                         Twitter username <span class="pl-1 text-gray-400 dark:text-gray-300 font-normal">(optional)</span>
                     </label>
-                    <input pattern="[a-zA-Z\d_]+" type="text" name="twitter_username" id="twitter_username" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500">
+                    <input pattern="[a-zA-Z\d_]+" type="text" name="twitter_username" id="twitter_username" placeholder="John Doe" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500">
                 </div>
                 <div class="flex items-start md:col-span-2 mt-4 order-last">
                     <div class="flex items-center h-5">
                         <input id="terms" name="terms" type="checkbox" class="w-5 h-5 cursor-pointer bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600" required>                    
                     </div>
                     <div class="ml-3 leading-none">
-                        <label for="terms" class="text-gray-500 dark:text-gray-400">I have read and agree with the
-                            <a href="/terms-of-service" target="_blank" class="underline">Terms of Service</a>
+                        <label for="terms" class="text-gray-500 dark:text-gray-400">
+                            I have read and agree with the
+                            <a href="/terms-of-service" target="_blank" class="underline dark:text-gray-400 dark:hover:text-white text-primary-700">Terms of Service</a>
                             and the
-                            <a href="/code-of-conduct" target="_blank" class="underline">Code of Conduct</a>
+                            <a href="/code-of-conduct" target="_blank" class="underline dark:text-gray-400 dark:hover:text-white text-primary-700">Code of Conduct</a>
                         </label>
                     </div>
                 </div>
             </div>
             <div>
-                <Button on:click outline color="light" class="w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+                <Button on:click outline color="light" class="select-none w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
                     {#if next}
                         Next Step: {next}
                     {:else}

@@ -1,1 +1,4 @@
-<slot />
+
+<main>
+    <slot />
+</main>

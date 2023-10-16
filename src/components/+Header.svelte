@@ -91,14 +91,14 @@
         </section>
 
         <section class="center flex items-center">
-            <NavUl divClass="w-full lg:block lg:w-auto" ulClass="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium p-2">
+            <NavUl divClass="w-full lg:block lg:w-auto" ulClass="flex flex-col mt-4 md:flex-row md:space-x-10 md:mt-0 md:text-sm md:font-medium p-2">
                 <NavLi href="/models">
                     <div class="flex items-center">
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
-                            <path opacity=".5" fill="currentColor" d="M12 12.3 3.5 7.05 12 1.8l8.5 5.25z"></path>
-                            <path opacity=".75" fill="currentColor" d="M12 22.2v-9.9l8.5-5.25v9.9z"></path>
-                            <path fill="currentColor" d="m12 22.2-8.5-5.25v-9.9L12 12.3z"></path>
-                        </svg>       
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="3.5 2.5 17 19">
+                            <path d="M20.23 7.24L12 12L3.77 7.24a1.98 1.98 0 0 1 .7-.71L11 2.76c.62-.35 1.38-.35 2 0l6.53 3.77c.29.173.531.418.7.71z" opacity=".5" fill="currentColor"></path>
+                            <path d="M12 12v9.5a2.09 2.09 0 0 1-.91-.21L4.5 17.48a2.003 2.003 0 0 1-1-1.73v-7.5a2.06 2.06 0 0 1 .27-1.01L12 12z" opacity=".75" fill="currentColor"></path>                             
+                            <path d="M20.5 8.25v7.5a2.003 2.003 0 0 1-1 1.73l-6.62 3.82c-.275.13-.576.198-.88.2V12l8.23-4.76c.175.308.268.656.27 1.01z" fill="currentColor"></path>                         
+                        </svg>                    
                         <span class="pl-2">Models</span>
                     </div>
                 </NavLi>

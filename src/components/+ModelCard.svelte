@@ -3,11 +3,11 @@
     export let title = "";
 </script>
 
-<article class="group rounded-lg bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 border">
+<article class="group rounded-lg bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 border hover:bg-gray-75 hover:dark:bg-gray-850">
     <a class="block p-2" href="#">
         <header class="flex items-center mb-3 pr-6" {title}>
             <img alt="" class="w-5 h-5 rounded mr-2 flex-none" src="https://aeiljuispo.cloudimg.io/v7/https://cdn-uploads.huggingface.co/production/uploads/1671173450971-noauth.jpeg?w=200&h=200&f=face"> 
-            <h4 class="text-ellipsis overflow-hidden text-base leading-none truncate dark:text-white text-black group-hover:text-primary-700 dark:group-hover:text-primary-500">{title}</h4>
+            <h4 class="text-ellipsis overflow-hidden text-base leading-none truncate dark:text-white text-black group-hover:underline">{title}</h4>
         </header>
         <div class="text-gray-700 dark:text-gray-400 text-sm mb-6 text-ellipsis overflow-hidden line-clamp-2 h-[2.5rem] pr-6">
             <span>{description}</span>

@@ -1,19 +1,19 @@
-import { redirect } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
 import { env } from '$lib/env';
-import camelize from "../../../utils/camalize";
+import parseCookie from "../../../utils/parseCookie";
 
 const LOGIN_URL = `${env.BASE_API_URL}/${env.LOGIN_PATH}`;
 
-export const load = async ({ cookies }) => {
-    const loggedIn = cookies.get("logged_in") === "true";
-
-    if (loggedIn) {
-        throw redirect(301, '/me');
+/** @type {import('./$types').PageServerLoad} */
+export const load = async ({ locals }) => {
+    if (locals.loggedIn && locals.user) {
+        throw redirect(301, `/${locals.user.username}`);
     }
 };
-  
+
+/** @type {import('./$types').Actions} */
 export const actions = {
-    default: async ({ cookies, request, url }) => {
+    default: async ({ cookies, request, url, fetch }) => {
         const formData = await request.formData();
         
         const res = await fetch(LOGIN_URL, {
@@ -22,42 +22,22 @@ export const actions = {
             method: "POST",
         });
 
-        if (res.ok) {            
-            const cookieResponse= res.headers.get("set-cookie");
-            if (cookieResponse) {
-                const cookiesString = cookieResponse.replace("Response Cookies: ", "");
-                const cookiesArray = cookiesString.split(', ');
-
-                cookiesArray.forEach(cookie => {
-                    const cookieParts = cookie.split('; ');
-                  
-                    const [name, value] = cookieParts[0].split('=');
-   
-                    const options = {};
-                  
-                    for (let i = 1; i < cookieParts.length; i++) {
-                      const [attrName, attrValue] = cookieParts[i].split('=');
-                      options[camelize(attrName)] = attrValue || true;
-                    }
-                  
-                    cookies.set(name, value, options);
-                  });
-
-            }
-            
-            if (url.searchParams.has('redirectTo')) {
-                throw redirect(301, url.searchParams.get('redirectTo') || '/');
-            }
-
-            return {
-                status: 200,
-                body: { message: "Login was completed successfully." },
-            };
+        if (!res.ok) {
+            const response = await res.json();
+            const errors = [];
+            errors.push({ error: response.error, id: 0 });
+            return fail(400, { errors: errors });
         }
-        
-        return {
-
-            error: await res.text(),
-        };
+       
+        const cookieResponse= res.headers.get("set-cookie");
+        if (cookieResponse) {
+            const cookieParsed = parseCookie(cookieResponse);
+            
+            cookieParsed.forEach(cookie => {
+                cookies.set(cookie.name, cookie.value, cookie.options);
+            });
+        }
+            
+        throw redirect(301, url.searchParams.get('rext') || '/');
     }
 };

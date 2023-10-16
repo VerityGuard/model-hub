@@ -18,15 +18,15 @@
             <div class="mb-14 grid grid-cols-1 gap-6">
                 <div>
                     <label for="email" class="block mb-2 dark:text-gray-400 font-medium">Email address</label>
-                    <input autocorrect="off" autocapitalize="none" autocomplete="email" type="email" name="email" id="email" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="name@company.com" required>
+                    <input autocorrect="off" autocapitalize="none" autocomplete="email" type="email" name="email" id="email" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="name@company.com" required>
                 </div>
                 <div>
                     <label for="password" class="block mb-2 dark:text-gray-400 font-medium">Password</label>
-                    <input autocomplete="new-password" maxlength="100" minlength="4" type="password" name="password" id="password" placeholder="••••••••" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-500 dark:focus:ring-gray-500 dark:focus:border-gray-600" required>
+                    <input autocomplete="new-password" maxlength="100" minlength="4" type="password" name="password" id="password" placeholder="••••••••" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-600" required>
                 </div>
             </div>
             <div>
-                <Button on:click outline color="light" class="w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+                <Button on:click outline color="light" class="select-none w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
                     {#if next}
                         Next Step: {next}
                     {:else}

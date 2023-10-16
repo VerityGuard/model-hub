@@ -1,6 +1,7 @@
 <script>
 	import { Button } from "flowbite-svelte";
 	import Logo from "./+Logo.svelte";
+	import { applyAction, enhance } from "$app/forms";
 
     let waitingForLogin = false;
 
@@ -22,19 +23,27 @@
         <p class="font-light text-gray-500 dark:text-gray-400 mb-8 text-center">
             Don't have an account yet? <a href="/join" class="font-medium text-primary-700 underline dark:text-gray-400 dark:hover:text-white">Sign up</a>
         </p>
-        <form method="post">
+        <form 
+            method="post" 
+            use:enhance={async () => {
+                return async ({ result }) => {
+                await applyAction(result);
+                };
+            }}
+          >
+            <input type="hidden" name="grant_type" value="password">
             <div class="mb-14 grid grid-cols-1 gap-6">
                 <div>
                     <label for="username" class="block mb-2 dark:text-gray-400 font-medium">Username or Email address</label>
-                    <input autocorrect="off" autocapitalize="none" autocomplete="username" type="text" name="username" id="username" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="name@company.com" required>
+                    <input autocorrect="off" autocapitalize="none" autocomplete="username" type="text" name="username" id="username" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" placeholder="name@company.com" required>
                 </div>
                 <div>
                     <label for="password" class="block mb-2 dark:text-gray-400 font-medium">Password</label>
-                    <input autocomplete="current-password" type="password" name="password" id="password" placeholder="••••••••" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-400 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
+                    <input autocomplete="current-password" type="password" name="password" id="password" placeholder="••••••••" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
                 </div>
             </div>
             <div>
-                <Button on:click={handleSubmit} type="submit" outline color="light" class="w-full mb-3 text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+                <Button on:click={handleSubmit} type="submit" outline color="light" class="select-none w-full mb-3 text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
                     {#if waitingForLogin}
                         <svg aria-hidden="true" role="status" class="inline w-5 h-5 mr-3 fill-primary-700 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>

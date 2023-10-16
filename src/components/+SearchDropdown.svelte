@@ -6,7 +6,6 @@
 	import RecentHit from "./+RecentHit.svelte";
 	import { favoriteSearches } from "../stores/favorite-searches";
 	import FavoriteHit from "./+FavoriteHit.svelte";
-	import { fly } from "svelte/transition";
 
     export let searchQuery = '';
 
@@ -87,7 +86,6 @@
         totalHits = modelHits + userHits;
     }
 
-    // @ts-ignore
     $: updateHits(searchQuery);
 
 
@@ -113,8 +111,9 @@
 
             if (id) {
                 const title = focusedItem?.querySelector('.item-title')?.textContent ?? '';
-                // @ts-ignore
-                const icon = focusedItem?.querySelector('.item-icon')?.src ?? undefined;
+                /** @type {HTMLImageElement | null | undefined}*/
+                const imageElement = focusedItem?.querySelector('.item-icon');
+                const icon = imageElement?.src || undefined;
                 const newItem = { title, icon, url: route, id };
 
                 addToRecentSearches(newItem);
