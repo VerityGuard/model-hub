@@ -31,7 +31,7 @@
             {#if icon}
                 <img alt="" class="w-6 h-6 rounded mr-4 item-icon" src={icon}>
             {/if}
-            <div class="overflow-hidden text-ellipsis whitespace-nowrap w-full inline-flex font-medium">
+            <div class="overflow-hidden text-ellipsis whitespace-nowrap w-full font-medium">
                 <span class="item-title">
                     {title}
                 </span>

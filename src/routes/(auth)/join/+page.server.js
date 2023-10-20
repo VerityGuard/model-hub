@@ -26,6 +26,7 @@ export const actions = {
             const response = await res.json();
             const errors = [];
             errors.push({ error: response.error, id: 0 });
+            console.log(errors);
             return fail(400, { errors: errors });
         }
            

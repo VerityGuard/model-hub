@@ -76,10 +76,10 @@
                 </div>
                 <div class="flex items-start md:col-span-2 mt-4 order-last">
                     <div class="flex items-center h-5">
-                        <input id="terms" name="terms" type="checkbox" class="w-5 h-5 cursor-pointer bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600" required>                    
+                        <input id="terms" name="terms" type="checkbox" class="w-5 h-5 cursor-pointer ring-offset-gray-50 dark:bg-gray-500 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-700" required>                    
                     </div>
                     <div class="ml-3 leading-none">
-                        <label for="terms" class="text-gray-500 dark:text-gray-400">
+                        <label for="terms" class="text-gray-500 dark:text-gray-400 cursor-pointer">
                             I have read and agree with the
                             <a href="/terms-of-service" target="_blank" class="underline dark:text-gray-400 dark:hover:text-white text-primary-700">Terms of Service</a>
                             and the

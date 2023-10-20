@@ -24,7 +24,7 @@
 </script>
 
 
-<div class="relative ml-10 px-3">
+<div class="relative min-[440px]:ml-10 px-3">
     <div>
       <button bind:this={profileIconBtn} on:click={onProfileIconClick} type="button" class="relative hover:ring-2 ring-offset-1 ring-offset-transparent ring-gray-200 focus:ring-2 dark:ring-gray-700 flex rounded-full text-sm focus:outline-none" aria-expanded="false" aria-haspopup="true">
         <span class="absolute -inset-1.5"></span>

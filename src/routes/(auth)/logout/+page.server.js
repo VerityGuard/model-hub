@@ -17,7 +17,7 @@ export const actions = {
         if (locals.loggedIn) {
 
             const body = JSON.stringify({refresh_token: cookies.get("refresh_token")});
-            console.log(body);
+
             const res = await fetch(LOGOUT_URL, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,6 +27,8 @@ export const actions = {
                 credentials: 'include',
                 method: "POST",
             });
+
+            console.log(LOGOUT_URL);
 
             if (!res.ok) {
                 const response = await res.json();

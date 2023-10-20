@@ -38,7 +38,7 @@
             {#if icon}
                 <img alt="" class="w-6 h-6 rounded mr-4 item-icon" src="{icon}">
             {/if}
-            <div class="overflow-hidden text-ellipsis whitespace-nowrap w-full inline-flex font-medium">
+            <div class="overflow-hidden text-ellipsis whitespace-nowrap w-full font-medium">
                 <span class="item-title">
                     {#if searchQuery}                    
                         {@html title.replace(new RegExp(`(${searchQuery})`, 'i'), '<mark class="bg-transparent text-primary-700 dark:text-white font-semibold">$1</mark>')}

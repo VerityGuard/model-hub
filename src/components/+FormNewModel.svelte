@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="border-t border-gray-150 my-6 dark:border-gray-500"></div>
+    <div class="border-t border-gray-200 my-6 dark:border-gray-500"></div>
 
     <div class="space-y-6 dark:text-gray-400">
         <label class="flex cursor-pointer select-none">
@@ -55,7 +55,7 @@
         </label>
      </div>
 
-     <div class="border-t border-gray-150 my-6 dark:border-gray-500"></div>
+     <div class="border-t border-gray-200 my-6 dark:border-gray-500"></div>
 
      <div>
         <label for="license" class="block mb-2 dark:text-gray-400 font-medium">
@@ -85,7 +85,7 @@
 
     <div class="mt-6">
         <label class="flex cursor-pointer select-none dark:text-gray-400">
-            <input id="readme" name="readme" type="checkbox" class="shrink-0 mr-3 mt-2 w-3.5 h-3.5 cursor-pointer bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600" required>  
+            <input id="readme" name="readme" type="checkbox" class="shrink-0 mr-3 mt-2 w-3.5 h-3.5 cursor-pointer ring-offset-gray-50 dark:bg-gray-500 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-700" required>  
             <div class="flex flex-col">
                <div class="font-medium">Add README</div>
                <span class="text-sm text-gray-500">
@@ -98,7 +98,7 @@
          </label>
     </div>
 
-    <div class="border-t border-gray-150 my-6 dark:border-gray-500"></div>
+    <div class="border-t border-gray-200 my-6 dark:border-gray-500"></div>
 
     <div class="flex">
         <Button on:click outline color="light" class="w-60 select-none text-base inline-flex text-gray-700 p-2.5 bg-white rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">

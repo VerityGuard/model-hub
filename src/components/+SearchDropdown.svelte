@@ -331,7 +331,7 @@
                             <a href="#" class="focus:ring-4 focus:outline-none text-sm hover:text-gray-900 border border-gray-200 dark:border-gray-700 dark:hover:text-white dark:text-gray-400 dark:bg-gray-600 dark:hover:bg-gray-550 focus:ring-gray-200 dark:focus:ring-gray-700 flex bg-gray-100 text-gray-700 leading-6 cursor-pointer p-3 rounded-lg shadow-sm hover:bg-gray-125">
                                 <div class="flex w-full items-center">
                                     <div class="overflow-hidden text-ellipsis whitespace-nowrap font-medium inline-flex w-full items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 min-w-[1.5rem]" viewBox="0 0 24 24">
                                             <path d="M4.5,6C4.776123,6,5,6.223877,5,6.5V11c0.0009155,0.828064,0.671936,1.4990845,1.5,1.5H18.2930298l-2.6464844-2.6464844c-0.1871948-0.1937866-0.1871948-0.5009766,0-0.6947021C15.8383789,8.9602051,16.1549072,8.9546509,16.3535156,9.1465454l3.5,3.5c0.000061,0,0.0001221,0.000061,0.0001221,0.0001221c0.1951904,0.1951904,0.1951294,0.5117188-0.0001221,0.7068481l-3.5,3.5C16.2598877,16.9474487,16.1326294,17.0001831,16,17c-0.1325684,0-0.2597046-0.0526733-0.3533936-0.1464233c-0.1953125-0.1952515-0.1953125-0.5118408-0.0001221-0.7070923L18.2930298,13.5H6.5c-1.380188-0.0012817-2.4987183-1.119812-2.5-2.5V6.5C4,6.223877,4.223877,6,4.5,6z" fill="currentColor"></path>
                                         </svg>                   
                                         <span class="ml-2">See all {modelHits} model results for "{searchQuery}"</span>
@@ -362,7 +362,7 @@
                             <a href="#" class="focus:ring-4 focus:outline-none text-sm hover:text-gray-900 border border-gray-200 dark:border-gray-700 dark:hover:text-white dark:text-gray-400 dark:bg-gray-600 dark:hover:bg-gray-550 focus:ring-gray-200 dark:focus:ring-gray-700 flex bg-gray-100 text-gray-700 leading-6 cursor-pointer p-3 rounded-lg shadow-sm hover:bg-gray-125">
                                 <div class="flex w-full items-center">
                                     <div class="overflow-hidden text-ellipsis whitespace-nowrap font-medium inline-flex w-full items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 min-w-[1.5rem]" viewBox="0 0 24 24">
                                             <path d="M4.5,6C4.776123,6,5,6.223877,5,6.5V11c0.0009155,0.828064,0.671936,1.4990845,1.5,1.5H18.2930298l-2.6464844-2.6464844c-0.1871948-0.1937866-0.1871948-0.5009766,0-0.6947021C15.8383789,8.9602051,16.1549072,8.9546509,16.3535156,9.1465454l3.5,3.5c0.000061,0,0.0001221,0.000061,0.0001221,0.0001221c0.1951904,0.1951904,0.1951294,0.5117188-0.0001221,0.7068481l-3.5,3.5C16.2598877,16.9474487,16.1326294,17.0001831,16,17c-0.1325684,0-0.2597046-0.0526733-0.3533936-0.1464233c-0.1953125-0.1952515-0.1953125-0.5118408-0.0001221-0.7070923L18.2930298,13.5H6.5c-1.380188-0.0012817-2.4987183-1.119812-2.5-2.5V6.5C4,6.223877,4.223877,6,4.5,6z" fill="currentColor"></path>
                                         </svg>                   
                                         <span class="ml-2">See all {userHits} user results for "{searchQuery}"</span>
