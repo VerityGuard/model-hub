@@ -1,8 +1,9 @@
-import { env } from '$lib/env';
+import { BASE_API_URL, ACCOUNTS_PATH } from "$env/static/private";
 import { error } from '@sveltejs/kit';
 
-const ACCOUNTS_URL = `${env.BASE_API_URL}/${env.ACCOUNTS_PATH}`;
+const ACCOUNTS_URL = `${BASE_API_URL}/${ACCOUNTS_PATH}`;
 
+/** @type {import('./$types').PageServerLoad} */
 export async function load({ params, fetch, cookies }){
 
     const postUsernameData = params.username;
@@ -24,7 +25,7 @@ export async function load({ params, fetch, cookies }){
     const userRead = await res.json();
 
     if (userRead.avatar) {
-        userRead.avatar = `${env.BASE_API_URL}/${userRead.avatar}`;
+        userRead.avatar = `${BASE_API_URL}/${userRead.avatar}`;
     }   
 
 	return {postUsernameData, userRead}

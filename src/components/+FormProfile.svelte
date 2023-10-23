@@ -17,14 +17,8 @@
 
         if (selectedFiles.length > 0) {
             hasFileSelected = true;
-            const selectedFile = selectedFiles[0];
-            console.log('Selected File:', selectedFile);
-            console.log('File Name:', selectedFile.name);
-            console.log('File Size:', selectedFile.size);
-            console.log('File Type:', selectedFile.type);
         } else {
             hasFileSelected = false;
-            console.log('No file selected.');
         }
   }
 </script>

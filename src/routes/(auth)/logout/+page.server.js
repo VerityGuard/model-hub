@@ -1,7 +1,7 @@
-import { env } from "$lib/env";
+import { BASE_API_URL, LOGOUT_PATH } from '$env/static/private';
 import { fail, redirect } from "@sveltejs/kit";
 
-const LOGOUT_URL = `${env.BASE_API_URL}/${env.LOGOUT_PATH}`;
+const LOGOUT_URL = `${BASE_API_URL}/${LOGOUT_PATH}`;
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ locals }) {
@@ -27,8 +27,6 @@ export const actions = {
                 credentials: 'include',
                 method: "POST",
             });
-
-            console.log(LOGOUT_URL);
 
             if (!res.ok) {
                 const response = await res.json();

@@ -1,3 +1,0 @@
-2023-09-19T11:12:08.962Z: Login form submitted
-2023-09-19T11:12:08.963Z: Email: dwdw
-2023-09-19T11:12:08.963Z: Password: dwdwdwd

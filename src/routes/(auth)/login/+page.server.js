@@ -1,8 +1,8 @@
 import { fail, redirect } from "@sveltejs/kit";
-import { env } from '$lib/env';
+import { BASE_API_URL, LOGIN_PATH } from "$env/static/private";
 import parseCookie from "../../../utils/parseCookie";
 
-const LOGIN_URL = `${env.BASE_API_URL}/${env.LOGIN_PATH}`;
+const LOGIN_URL = `${BASE_API_URL}/${LOGIN_PATH}`;
 
 /** @type {import('./$types').PageServerLoad} */
 export const load = async ({ locals }) => {
@@ -14,12 +14,18 @@ export const load = async ({ locals }) => {
 /** @type {import('./$types').Actions} */
 export const actions = {
     default: async ({ cookies, request, url, fetch }) => {
+
+        // create a prototype for the formdata to convert it to json
         const formData = await request.formData();
+
         
         const res = await fetch(LOGIN_URL, {
             body: formData,
             credentials: 'include',
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
 
         if (!res.ok) {

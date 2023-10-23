@@ -1,10 +1,20 @@
 <script>
-
+	import { applyAction, enhance } from "$app/forms";
 	import { Button } from "flowbite-svelte";
-
+    /*
+        let description = ''
+        $: description_chars = description.length;
+    */
 </script>
-<form class="w-full">
-
+<form 
+    class="w-full"
+    method="post" 
+    use:enhance={async () => {
+        return async ({ result }) => {
+        await applyAction(result);
+        };
+    }}
+    >
     <div class="mt-12 flex flex-col space-y-5 sm:flex-row sm:space-x-2 sm:space-y-0">
         <div class="sm:w-64">
             <label for="owner" class="block mb-2 dark:text-gray-400 font-medium">Owner</label>
@@ -12,8 +22,8 @@
         </div>
         <span class="hidden sm:block self-end pb-2 text-2xl text-gray-250 dark:text-gray-500">/</span>
         <div class="flex-grow">
-            <label for="model-name" class="block mb-2 dark:text-gray-400 font-medium">Model name</label>
-            <input type="text" name="model-name" id="model-name" placeholder="New model name" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
+            <label for="name" class="block mb-2 dark:text-gray-400 font-medium">Model name</label>
+            <input type="text" name="name" id="name" placeholder="New model name" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
         </div>
     </div> 
     <div class="mt-6">
@@ -61,7 +71,7 @@
         <label for="license" class="block mb-2 dark:text-gray-400 font-medium">
             Choose a license
         </label>
-        <input type="text"  name="license" id="license" placeholder="New model license" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
+        <input type="text"  name="license" id="license" placeholder="New model license" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500">
         <span class="text-sm text-gray-500">
             A license tells others what they can and can't do with your code.
             <a href="#" target="_blank" class="font-medium text-primary-700 underline dark:text-gray-400 dark:hover:text-white">
@@ -74,7 +84,7 @@
         <label for="license" class="block mb-2 dark:text-gray-400 font-medium">
             Add .gitignore
         </label>
-        <input type="text" name="gitignore" id="gitignore" placeholder="New model .gitignore" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
+        <input type="text" name="gitignore" id="gitignore" placeholder="New model .gitignore" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500">
         <span class="text-sm text-gray-500">
             This is where you can choose which files not to track.
             <a href="#" target="_blank" class="font-medium text-primary-700 underline dark:text-gray-400 dark:hover:text-white">
@@ -85,7 +95,7 @@
 
     <div class="mt-6">
         <label class="flex cursor-pointer select-none dark:text-gray-400">
-            <input id="readme" name="readme" type="checkbox" class="shrink-0 mr-3 mt-2 w-3.5 h-3.5 cursor-pointer ring-offset-gray-50 dark:bg-gray-500 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-700" required>  
+            <input id="readme" name="readme" type="checkbox" class="shrink-0 mr-3 mt-2 w-3.5 h-3.5 cursor-pointer ring-offset-gray-50 dark:bg-gray-500 dark:ring-offset-gray-800 focus:ring-2 dark:border-gray-600 rounded text-primary-600 focus:ring-primary-700">  
             <div class="flex flex-col">
                <div class="font-medium">Add README</div>
                <span class="text-sm text-gray-500">
@@ -101,7 +111,7 @@
     <div class="border-t border-gray-200 my-6 dark:border-gray-500"></div>
 
     <div class="flex">
-        <Button on:click outline color="light" class="w-60 select-none text-base inline-flex text-gray-700 p-2.5 bg-white rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+        <Button on:click type="submit" outline color="light" class="w-60 select-none text-base inline-flex text-gray-700 p-2.5 bg-white rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
             Create Model
         </Button>
     </div>

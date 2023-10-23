@@ -1,8 +1,8 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { env } from '$lib/env';
+import { BASE_API_URL, REGISTER_PATH } from '$env/static/private';
 import parseCookie from '../../../utils/parseCookie';
 
-const REGISTER_URL = `${env.BASE_API_URL}/${env.REGISTER_PATH}`;
+const REGISTER_URL = `${BASE_API_URL}/${REGISTER_PATH}`;
 
 /** @type {import('./$types').PageServerLoad} */
 export const load = async ({ locals }) => {

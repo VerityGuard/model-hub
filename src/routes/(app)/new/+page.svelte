@@ -1,10 +1,5 @@
 <script>
 	import FormNewModel from "../../../components/+FormNewModel.svelte";
-
-    /*
-        let description = ''
-        $: description_chars = description.length;
-    */
 </script>
 
 <section>

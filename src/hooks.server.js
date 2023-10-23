@@ -1,6 +1,6 @@
-import { env } from "$lib/env";
+import { BASE_API_URL, PROFILE_PATH } from '$env/static/private';
 
-const PROFILE_URL = `${env.BASE_API_URL}/${env.PROFILE_PATH}`;
+const PROFILE_URL = `${BASE_API_URL}/${PROFILE_PATH}`;
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
@@ -25,6 +25,7 @@ export async function handle({ event, resolve }) {
         method: "GET",
     });
 
+
 	if (!res.ok) {
 		// if there is no session load page as normal
 		return await resolve(event);
@@ -37,7 +38,7 @@ export async function handle({ event, resolve }) {
 
 	event.locals.user = response;
 	if (event.locals.user.avatar) {
-        event.locals.user.avatar = `${env.BASE_API_URL}/${event.locals.user.avatar}`;
+        event.locals.user.avatar = `${BASE_API_URL}/${event.locals.user.avatar}`;
 	}
 
 	// load page as normal
