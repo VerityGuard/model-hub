@@ -1,5 +1,6 @@
 <script>
 	import { applyAction, enhance } from '$app/forms';
+	import Avatar from '../../../../components/+Avatar.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -13,8 +14,12 @@
         <h1 class="flex flex-wrap items-center leading-tight text-lg md:text-xl">
             <div class="group flex flex-none items-center">
             <div class="relative mr-2 flex items-center"> 
-                    <img alt="{user.username}" class="w-5 h-5 rounded-full " src="{user.avatar}">
-                </div>
+                {#if user.avatar}
+                    <img alt="{user.username}" class="w-5 h-5 rounded" src="{user.avatar}">
+                {:else}
+                    <Avatar name={user.username} />
+                {/if}
+            </div>
             <a href="/{user.username}" class="text-gray-400 dark:text-gray-300 hover:underline">{user.username}</a> 
             <div class="mx-0.5 text-gray-300 dark:text-gray-200">/</div>
             </div>

@@ -6,7 +6,7 @@
 
 <main class="flex flex-1 flex-col">
     <div class="flex-1">
-        <div class="container pb-32 pt-28 text-center 2xl:pb-40 2xl:pt-32">
+        <div class="container m-auto pb-32 pt-28 text-center 2xl:pb-40 2xl:pt-32">
             
             <img class="mx-auto mb-4 h-28 w-28" src={errorImage} alt="">
             <div>

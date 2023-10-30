@@ -111,7 +111,7 @@
     <div class="border-t border-gray-200 my-6 dark:border-gray-500"></div>
 
     <div class="flex">
-        <Button on:click type="submit" outline color="light" class="w-60 select-none text-base inline-flex text-gray-700 p-2.5 bg-white rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+        <Button on:click type="submit" outline color="light" class=" focus:ring-2 w-60 select-none text-base inline-flex text-gray-700 p-2.5 bg-white rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
             Create Model
         </Button>
     </div>

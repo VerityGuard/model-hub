@@ -26,7 +26,7 @@
 </script>
 
 <li {id} class="mt-3 search-item">
-    <a href="{url}" class="focus:ring-4 focus:outline-none text-sm hover:text-gray-900 border border-gray-200 dark:border-gray-600 dark:hover:text-white dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-gray-200 dark:focus:ring-gray-700 flex bg-white text-gray-700 leading-6 cursor-pointer p-3 rounded-lg shadow-sm hover:bg-gray-50">
+    <a href="{url}" class="focus:ring-2 focus:outline-none text-sm hover:text-gray-900 border border-gray-200 dark:border-gray-600 dark:hover:text-white dark:text-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-gray-200 dark:focus:ring-gray-700 flex bg-white text-gray-700 leading-6 cursor-pointer p-3 rounded-lg shadow-sm hover:bg-gray-50">
         <div class="flex w-full items-center">
             {#if icon}
                 <img alt="" class="w-6 h-6 rounded mr-4 item-icon" src={icon}>

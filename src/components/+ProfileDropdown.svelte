@@ -2,6 +2,7 @@
   import { clickOutside } from "../actions/clickOutside";
 	import { page } from '$app/stores';
   import { applyAction, enhance } from '$app/forms';
+	import Avatar from "./+Avatar.svelte";
 
   let user = $page.data.user;
 
@@ -29,7 +30,11 @@
       <button bind:this={profileIconBtn} on:click={onProfileIconClick} type="button" class="relative hover:ring-2 ring-offset-1 ring-offset-transparent ring-gray-200 focus:ring-2 dark:ring-gray-700 flex rounded-full text-sm focus:outline-none" aria-expanded="false" aria-haspopup="true">
         <span class="absolute -inset-1.5"></span>
         <span class="sr-only">Open user menu</span>
-        <img class="h-8 w-8 rounded-full" src="{user.avatar}" alt="">
+        {#if user.avatar}
+          <img class="h-8 w-8 rounded-full" src="{user.avatar}" alt="">
+        {:else}
+          <Avatar name={user.name} className="h-8 w-8 rounded-full" />
+        {/if}
       </button>
     </div>
     {#if profileWindowOpen}

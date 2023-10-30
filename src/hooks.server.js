@@ -1,6 +1,7 @@
-import { BASE_API_URL, PROFILE_PATH } from '$env/static/private';
+import { BASE_API_URL, PROFILE_PATH, REGISTER_PATH } from '$env/static/private';
 
 const PROFILE_URL = `${BASE_API_URL}/${PROFILE_PATH}`;
+const REFRESH_URL = `${BASE_API_URL}/${REGISTER_PATH}`;
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
@@ -28,6 +29,19 @@ export async function handle({ event, resolve }) {
 
 	if (!res.ok) {
 		// if there is no session load page as normal
+
+		// const rres = await fetch(`${REFRESH_URL}`, {
+		// 	headers: {
+		// 		Authorization: `Bearer ${event.cookies.get("access_token")}`,
+		// 	},
+		// 	body: JSON.stringify({
+		// 		refresh_token: event.cookies.get("refresh_token"),
+		// 		grant_type: "refresh_token",
+		// 	}),
+		// 	credentials: 'include',
+		// 	method: "POST",
+		// });
+
 		return await resolve(event);
 	}
 

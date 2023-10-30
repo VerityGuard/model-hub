@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div>
-                <Button on:click outline color="light" class="select-none w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
+                <Button on:click outline color="light" class="focus:ring-2 select-none w-full text-base inline-flex bg-white text-gray-700 p-2.5 rounded-md border font-medium shadow-sm align-middle hover:bg-gray-50">
                     {#if next}
                         Next Step: {next}
                     {:else}

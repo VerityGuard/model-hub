@@ -1,7 +1,9 @@
 <script>
+	import Avatar from "./+Avatar.svelte";
+
     
     /**
-	 * @type {{ name: string; description: string; private: boolean; owner: { username: string; }; }}
+	 * @type {{ name: string; description: string; private: boolean; owner: { username: string; avatar: string; }; }}
 	 */
      export let model
      
@@ -11,8 +13,14 @@
 <article class="group rounded-lg bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 border">
     <a class="block p-2" href={title}>
         <header class="flex items-center mb-3" {title}>
-            <img alt="" class="w-5 h-5 rounded mr-2 flex-none" src="https://aeiljuispo.cloudimg.io/v7/https://cdn-uploads.huggingface.co/production/uploads/1671173450971-noauth.jpeg?w=200&h=200&f=face"> 
-            <h4 class="text-base leading-none pr-6 truncate dark:text-white text-black group-hover:underline">{title}</h4>
+            <div class="mr-2">
+                {#if model.owner.avatar}
+                    <img alt="{model.owner.username}" class="w-5 h-5 rounded flex-none" src="{model.owner.avatar}">
+                {:else}
+                    <Avatar name={model.owner.username} />
+                {/if}
+            </div>
+            <h4 class="text-base pr-6 truncate dark:text-white text-black group-hover:underline">{title}</h4>
             {#if model.private}
                 <span class="inline-flex ml-auto items-center px-2 py-1 text-sm font-medium text-gray-800 bg-gray-75 rounded dark:bg-gray-800 dark:text-gray-300">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="inline-block mr-2" height="12" width="12" xmlns="http://www.w3.org/2000/svg">

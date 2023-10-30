@@ -14,18 +14,12 @@ export const load = async ({ locals }) => {
 /** @type {import('./$types').Actions} */
 export const actions = {
     default: async ({ cookies, request, url, fetch }) => {
-
-        // create a prototype for the formdata to convert it to json
         const formData = await request.formData();
 
-        
         const res = await fetch(LOGIN_URL, {
             body: formData,
             credentials: 'include',
             method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
         });
 
         if (!res.ok) {
