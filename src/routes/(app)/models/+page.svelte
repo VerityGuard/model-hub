@@ -36,7 +36,7 @@
                 <div class="flex leading-none text-black dark:text-white text-xl">
                     Models
                     <div class="ml-3 text-gray-400">
-                        {#await data.streamed.repositories}
+                        {#await data.streamed.models}
                             <div class="animate-pulse w-24 h-6 bg-gray-250 rounded dark:bg-gray-600"></div>
                         {:then value}
                             <span>{value.metadata.total}</span>
@@ -53,24 +53,29 @@
             </div>
             <div class="relative">
                 <div class="grid grid-cols-1 gap-5 2xl:grid-cols-2">
-                    {#await data.streamed.repositories}
-                        {#each Array(numberSkeletons) as _, index (index)}
-                            <ModelCardSkeleton />
-                        {/each}
-                    {:then value}
-                        <!-- show No Models if no value-->
-                        {#each value.repositories as model}
-                            <ModelCard {model}/>
-                        {:else}
-                            <span class="text-black dark:text-white text-xl">No Models</span>
-                        {/each}
-                    {/await}
+                    {#if data.streamed}
+                        {#await data.streamed.models}
+                            {#each Array(numberSkeletons) as _, index (index)}
+                                <ModelCardSkeleton />
+                            {/each}
+                        {:then value}
+                            <!-- show No Models if no value-->
+                            {#each value.models as model}
+                                <ModelCard model={{ ...model, owner: { ...model.owner, avatar: `${data.base_api_url}/${model.owner.avatar}` } }}/>
+                            {:else}
+                                <span class="text-black dark:text-white text-xl">No Models</span>
+                            {/each}
+                        {/await}
+                    {/if}
                 </div>
             </div>
-            {#await data.streamed.repositories}
-            {:then value}
-                <PaginationFooter data={value.metadata} />
-            {/await}
+            {#if data.streamed}
+                {#await data.streamed.models}
+                    <span class="hidden">No Models</span>
+                {:then value}
+                    <PaginationFooter data={value.metadata} />
+                {/await}
+            {/if}
         </section>
     </div>
 </section>

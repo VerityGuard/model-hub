@@ -1,7 +1,7 @@
-import { BASE_API_URL, REPOSITORY_CREATE_PATH } from '$env/static/private';
+import { BASE_API_URL, MODEL_CREATE_PATH } from '$env/static/private';
 import { fail, redirect } from '@sveltejs/kit';
 
-const REPOSITORY_CREATE_URL = `${BASE_API_URL}/${REPOSITORY_CREATE_PATH}`;
+const MODEL_CREATE_URL = `${BASE_API_URL}/${MODEL_CREATE_PATH}`;
 
 /** @type {(path: string) => string} */
 function extractUrl(path) {
@@ -26,7 +26,7 @@ export const actions = {
         formDataObject.private = formDataObject.visibility === 'private';
         delete formDataObject.visibility;
 
-        const res = await fetch(REPOSITORY_CREATE_URL, {
+        const res = await fetch(MODEL_CREATE_URL, {
             body: JSON.stringify(formDataObject),
             credentials: 'include',
             method: "POST",
@@ -34,7 +34,7 @@ export const actions = {
                 Authorization: `Bearer ${cookies.get("access_token")}`,
                 'Content-Type': 'application/json'
             }
-        });
+        })
 
         console.log(res);
 

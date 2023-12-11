@@ -1,13 +1,13 @@
 <script>
 	import Avatar from "./+Avatar.svelte";
 
-    
     /**
 	 * @type {{ name: string; description: string; private: boolean; owner: { username: string; avatar: string; }; }}
 	 */
      export let model
      
      const title = `${model.owner.username}/${model.name}`;
+     const avatar = `${model.owner.avatar}`;
 </script>
 
 <article class="group rounded-lg bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 border">
@@ -15,7 +15,7 @@
         <header class="flex items-center mb-3" {title}>
             <div class="mr-2">
                 {#if model.owner.avatar}
-                    <img alt="{model.owner.username}" class="w-5 h-5 rounded flex-none" src="{model.owner.avatar}">
+                    <img alt="{model.owner.username}" class="w-5 h-5 rounded flex-none" src="{avatar}">
                 {:else}
                     <Avatar name={model.owner.username} />
                 {/if}

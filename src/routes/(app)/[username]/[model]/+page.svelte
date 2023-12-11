@@ -5,8 +5,8 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-    const user = data.userRead
-    const modelName = data.postModelData
+    const model = data.model;
+    const user = model.owner;
 </script>
 
 <div class="py-6 px-12 bg-gray-50 dark:bg-gray-750 border-b border-gray-200 dark:border-gray-900">
@@ -24,7 +24,7 @@
             <div class="mx-0.5 text-gray-300 dark:text-gray-200">/</div>
             </div>
             <div class="max-w-full">
-            <a class="break-words font-mono font-semibold hover:underline dark:text-white" href="/{user.username}/{modelName}">{modelName}</a> 
+            <a class="break-words font-mono font-semibold hover:underline dark:text-white" href="/{user.username}/{model.name}">{model.name}</a> 
             </div>
         </h1>
     </div>
@@ -40,7 +40,7 @@
     }}
     >
     <label for="files">Select files:</label>
-    <input type="text" id="repository_id" name="repository_id">
+    <input type="hidden" id="model_id" name="model_id" value={model.id}>
     <input type="file" id="files" name="files" multiple><br><br>
     <input type="submit">
 </form>

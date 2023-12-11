@@ -1,4 +1,4 @@
-import { BASE_API_URL, REPOSITORY_PATH } from "$env/static/private";
+import { BASE_API_URL, MODEL_PATH } from "$env/static/private";
 import { fail } from '@sveltejs/kit';
 
 const INCLUDE_COUNT = true;
@@ -6,7 +6,7 @@ const PAGE = 1;
 const PER_PAGE = 16;
 
 const query = `include_count=${INCLUDE_COUNT}&page=${PAGE}&per_page=${PER_PAGE}`;
-const REPOSITORY_URL = `${BASE_API_URL}/${REPOSITORY_PATH}?${query}`;
+const MODEL_URL = `${BASE_API_URL}/${MODEL_PATH}?${query}`;
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ fetch, locals, cookies }){
@@ -23,22 +23,20 @@ export async function load({ fetch, locals, cookies }){
         };
     }
 
-    const res = fetch(REPOSITORY_URL, headers)
-        .then(async (res) => {
-            if (!res.ok) {
-                const response = await res.json();
-                const errors = [];
-                errors.push({ error: response.error, id: 0 });
-                console.log(errors);
-                return fail(400, { errors: errors });
-            }
+    const res = await fetch(MODEL_URL, headers);
 
-            return res.json();
-        });
+    if (!res.ok) {
+        const response = await res.json();
+        const errors = [{ error: response.error, id: 0 }];
+        console.log(errors);
+        return fail(400, { errors });
+    }
+
+    const data = await res.json();
 
 	return { 
         streamed: {
-            repositories: res,
-        }
+            models: data,
+        },
      }
 }

@@ -1,19 +1,18 @@
-import { BASE_API_URL, ACCOUNTS_PATH, REPOSITORY_UPLOAD_PATH } from "$env/static/private";
+import { BASE_API_URL, ACCOUNTS_PATH, MODEL_PATH, MODEL_UPLOAD_PATH } from "$env/static/private";
 import { error, fail } from '@sveltejs/kit';
 
-const ACCOUNTS_URL = `${BASE_API_URL}/${ACCOUNTS_PATH}`;
-
-const REPOSITORY_UPLOAD_URL = `${BASE_API_URL}/${REPOSITORY_UPLOAD_PATH}`;
+const MODEL_UPLOAD_URL = `${BASE_API_URL}/${MODEL_UPLOAD_PATH}`;
+const MODEL_URL = `${BASE_API_URL}/${MODEL_PATH}`;
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params, fetch, cookies }){
 
-    const postUsernameData = params.username;
-    const postModelData = params.model;
+    const username = params.username;
+    const modelName = params.model;
 
-    const RELATIVE_ACCOUNTS_URL = `${ACCOUNTS_URL}/${postUsernameData}`;
+    const USER_MODEL_URL = `${MODEL_URL}/${username}/${modelName}`;
 
-    const res = await fetch(RELATIVE_ACCOUNTS_URL, {
+    const res = await fetch(USER_MODEL_URL, {
         headers: {
             Authorization: `Bearer ${cookies.get("access_token")}`,
         },
@@ -26,13 +25,13 @@ export async function load({ params, fetch, cookies }){
         throw error(404, response.detail);
     }
 
-    const userRead = await res.json();
+    const model = await res.json();
 
-    if (userRead.avatar) {
-        userRead.avatar = `${BASE_API_URL}/${userRead.avatar}`;
+    if (model.owner.avatar) {
+        model.owner.avatar = `${BASE_API_URL}/${model.owner.avatar}`;
     }   
 
-	return {postUsernameData, postModelData, userRead}
+	return {model}
 }
 
 /** @type {import('./$types').Actions} */
@@ -40,7 +39,7 @@ export const actions = {
     upload: async ({ cookies, request, fetch }) => {
         let formData = await request.formData();
         
-        const res = await fetch(REPOSITORY_UPLOAD_URL, {
+        const res = await fetch(MODEL_UPLOAD_URL, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${cookies.get("access_token")}`,
