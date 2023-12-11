@@ -1,5 +1,5 @@
 <script>
-	import FormNewModel from "../../../components/+FormNewModel.svelte";
+	import FormNewRepository from "../../../../components/+FormNewRepository.svelte";
 </script>
 
 <section>
@@ -8,7 +8,7 @@
             <h1 class="mb-0.5 text-xl font-semibold md:text-3xl dark:text-white">Create a new model repository</h1>
             <p class="text-md text-gray-500 dark:text-gray-350">A repository contains all model files, including the revision history.</p>
         </div>
-        <FormNewModel />
+        <FormNewRepository />
     </div>
 </section>
 

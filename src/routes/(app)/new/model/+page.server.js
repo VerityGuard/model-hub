@@ -5,7 +5,7 @@ const MODEL_CREATE_URL = `${BASE_API_URL}/${MODEL_CREATE_PATH}`;
 
 /** @type {(path: string) => string} */
 function extractUrl(path) {
-    const parts = path.split("models/")[1];
+    const parts = path.split("models")[1];
     return parts ? parts : "";
 }
 
@@ -26,6 +26,8 @@ export const actions = {
         formDataObject.private = formDataObject.visibility === 'private';
         delete formDataObject.visibility;
 
+        console.log(formDataObject);
+
         const res = await fetch(MODEL_CREATE_URL, {
             body: JSON.stringify(formDataObject),
             credentials: 'include',
@@ -35,8 +37,6 @@ export const actions = {
                 'Content-Type': 'application/json'
             }
         })
-
-        console.log(res);
 
         if (!res.ok) {
             const response = await res.json();
@@ -49,7 +49,12 @@ export const actions = {
 
         const path = response.path ?? '';
 
+        console.log(path);
+
         const next = extractUrl(path);
+
+        console.log(next);
+
             
         throw redirect(301, url.searchParams.get('rext') || next);
     }

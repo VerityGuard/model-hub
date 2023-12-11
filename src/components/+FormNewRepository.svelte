@@ -26,25 +26,15 @@
             <input type="text" name="name" id="name" placeholder="New model name" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
         </div>
     </div> 
-
     <div class="mt-6">
-        <!-- Full row width for endpoint url -->
-        <label for="endpoint" class="block mb-2 dark:text-gray-400 font-medium">Endpoint URL</label>
-        <div class="flex flex-row items-center space-x-2">
-            <div class="flex-grow">
-                <input type="text" name="endpoint" id="endpoint" placeholder="New model endpoint" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500" required>
-                <input type="hidden" name="type" id="type" value="endpoint">
-            </div>
+        <div>
+            <label for="description" class="block mb-2 dark:text-gray-400 font-medium">
+                Description
+                <span class="pl-1 text-gray-400 dark:text-gray-300 font-normal">(optional)</span>
+            </label>
+            <textarea maxlength="255" name="description" id="description" placeholder="New model description" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500"></textarea>
+            <!--<div class="text-xs py-1 dark:text-gray-500 text-right">{description_chars} / 255</div>-->
         </div>
-    </div>
-
-    <div class="mt-6">
-        <label for="description" class="block mb-2 dark:text-gray-400 font-medium">
-            Description
-            <span class="pl-1 text-gray-400 dark:text-gray-300 font-normal">(optional)</span>
-        </label>
-        <textarea maxlength="255" name="description" id="description" placeholder="New model description" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500"></textarea>
-        <!--<div class="text-xs py-1 dark:text-gray-500 text-right">{description_chars} / 255</div>--> <!-- to add this maybe we need a div wrapper-->
     </div>
 
     <div class="border-t border-gray-200 my-6 dark:border-gray-500"></div>
@@ -76,6 +66,32 @@
      </div>
 
      <div class="border-t border-gray-200 my-6 dark:border-gray-500"></div>
+
+     <div>
+        <label for="license" class="block mb-2 dark:text-gray-400 font-medium">
+            Choose a license
+        </label>
+        <input type="text"  name="license" id="license" placeholder="New model license" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500">
+        <span class="text-sm text-gray-500">
+            A license tells others what they can and can't do with your code.
+            <a href="#" target="_blank" class="font-medium text-primary-700 underline dark:text-gray-400 dark:hover:text-white">
+                Learn more about licenses.
+            </a>
+        </span>
+    </div>
+
+    <div class="mt-6">
+        <label for="license" class="block mb-2 dark:text-gray-400 font-medium">
+            Add .gitignore
+        </label>
+        <input type="text" name="gitignore" id="gitignore" placeholder="New model .gitignore" class="border border-gray-200 text-gray-900 rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder:text-gray-300 dark:placeholder:text-gray-500 dark:text-gray-250 dark:focus:ring-gray-500 dark:focus:border-gray-500">
+        <span class="text-sm text-gray-500">
+            This is where you can choose which files not to track.
+            <a href="#" target="_blank" class="font-medium text-primary-700 underline dark:text-gray-400 dark:hover:text-white">
+                Learn more about ignoring files.
+            </a>
+        </span>
+    </div>
 
     <div class="mt-6">
         <label class="flex cursor-pointer select-none dark:text-gray-400">
